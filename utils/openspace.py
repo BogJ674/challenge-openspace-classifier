@@ -57,6 +57,29 @@ class Openspace:
             print(table)
             print("-" * 20)
 
+    def display_statistics(self, total_colleagues: int) -> None:
+        """Displays statistics about the seating arrangement.
+
+        :param total_colleagues: Total number of colleagues to be seated
+        :return: None"""
+        remaining_seats = self.get_remaining_seats()
+        total_capacity = self.number_of_tables * self.table_capacity
+        seated_count = total_colleagues - len(self.unseated)
+
+        print("\n" + "=" * 40)
+        print("STATISTICS")
+        print("=" * 40)
+        print(f"Total capacity: {total_capacity} seats")
+        print(f"People seated: {seated_count}")
+        print(f"Remaining seats: {remaining_seats}")
+
+        # Display unseated people if any
+        if self.unseated:
+            print(f"\nWARNING: {len(self.unseated)} people could not be seated!")
+            print("Unseated colleagues:")
+            for name in self.unseated:
+                print(f"  - {name}")
+
     def store(self, filename: str = "output.csv") -> None:
         """Stores the repartition in a file. default: output.csv
 

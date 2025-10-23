@@ -28,10 +28,14 @@ This script runs everyday to re-assign everybody to a new seat.
 
 1. Clone the repository to your local machine.
 
-2 .To run the script, you can execute the `main.py` file from your command line:
+2. To run the script, you can execute the `main.py` file from your command line:
 
 ```
    python main.py
+```
+or add an input file:
+```
+   python main.py new_colleagues.csv
 ```
 
 3. The script reads your input file, and organizes your colleagues to random seat assignments. The resulting seating plan is displayed in your console and also saved to an "output.csv" file in your root directory. 

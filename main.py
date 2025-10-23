@@ -37,23 +37,7 @@ def main():
     openspace.display()
 
     # Display statistics
-    remaining_seats = openspace.get_remaining_seats()
-    total_capacity = NUMBER_OF_TABLES * TABLE_CAPACITY
-    seated_count = len(colleagues) - len(openspace.unseated)
-
-    print("\n" + "=" * 40)
-    print("STATISTICS")
-    print("=" * 40)
-    print(f"Total capacity: {total_capacity} seats")
-    print(f"People seated: {seated_count}")
-    print(f"Remaining seats: {remaining_seats}")
-
-    # Display unseated people if any
-    if openspace.unseated:
-        print(f"\nWARNING: {len(openspace.unseated)} people could not be seated!")
-        print("Unseated colleagues:")
-        for name in openspace.unseated:
-            print(f"  - {name}")
+    openspace.display_statistics(len(colleagues))
 
     # Store the arrangement to file
     print(f"\nStoring seating arrangement to {OUTPUT_FILE}...")
