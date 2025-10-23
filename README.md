@@ -14,7 +14,7 @@ This script runs everyday to re-assign everybody to a new seat.
 
 ```
 .
-├── src/
+├── utils/
 │   ├── openspace.py
 │   ├── table.py
 │   └── utils.py
