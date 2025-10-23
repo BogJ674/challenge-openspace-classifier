@@ -47,6 +47,15 @@ class Openspace:
         for table in self.tables:
             remaining += table.left_capacity()
         return remaining
+    
+    def get_seated_count(self) -> int:
+        """Returns the number of seats filled in.
+
+        :return: Number of seated colleagues"""
+        seated = 0
+        for table in self.tables:
+            seated += table.capacity - table.left_capacity()
+        return seated
 
     def display(self) -> None:
         """Displays the different tables and their occupants in a nice and readable way.
@@ -57,14 +66,13 @@ class Openspace:
             print(table)
             print("-" * 20)
 
-    def display_statistics(self, total_colleagues: int) -> None:
+    def display_statistics(self) -> None:
         """Displays statistics about the seating arrangement.
 
-        :param total_colleagues: Total number of colleagues to be seated
         :return: None"""
         remaining_seats = self.get_remaining_seats()
         total_capacity = self.number_of_tables * self.table_capacity
-        seated_count = total_colleagues - len(self.unseated)
+        seated_count = self.get_seated_count()
 
         print("\n" + "=" * 40)
         print("STATISTICS")

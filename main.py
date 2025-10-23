@@ -37,7 +37,7 @@ def main():
     openspace.display()
 
     # Display statistics
-    openspace.display_statistics(len(colleagues))
+    openspace.display_statistics()
 
     # Store the arrangement to file
     print(f"\nStoring seating arrangement to {OUTPUT_FILE}...")

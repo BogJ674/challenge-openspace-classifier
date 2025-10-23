@@ -32,7 +32,10 @@ class Seat:
         else:
             print("Seat is already free.")
             return None
-
+        
+    def __str__(self) -> str:
+        """Returns a string representation of the seat."""
+        return f"{'Free' if self.free else self.occupant}"
 
 class Table:
     """
@@ -71,7 +74,7 @@ class Table:
     def __str__(self) -> str:
         """Returns a string representation of the table and its seats."""
         seat_statuses = [
-            f"Seat {i+1}: {'Free' if seat.free else seat.occupant}"
+            f"Seat {i+1}: {seat}"
             for i, seat in enumerate(self.seats)
         ]
         return "\n".join(seat_statuses)
