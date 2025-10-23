@@ -7,7 +7,7 @@ Your company moved to a new office at CEVI Ghent. Its an openspace with 6 tables
 
 This script runs everyday to re-assign everybody to a new seat.
 
-![coworking_img](https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGRpdmVyc2UlMjB0ZWFtfGVufDB8fDB8fHwy)
+![coworking_img](https://media1.tenor.com/m/gucMj8UTrPoAAAAd/lets-take-our-seats-mr-garrison.gif)
 
 ## 📦 Repo structure
 
