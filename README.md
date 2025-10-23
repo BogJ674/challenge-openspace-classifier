@@ -1,7 +1,6 @@
 # OpenSpace Organizer
 [![forthebadge made-with-python](https://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-
 ## 🏢 Description
 
 Your company moved to a new office at CEVI Ghent. Its an openspace with 6 tables of 4 seats. As many of you are new colleagues, you come up with the idea of changing seats everyday and get to know each other better by working side by side with your new colleagues. 
@@ -67,5 +66,5 @@ This project took two days for completion.
 ## 📌 Personal Situation
 This project was done as part of the AI Boocamp at BeCode.org. 
 
-Connect with me on [LinkedIn](https://www.linkedin.com/in/vriveraq/).
+Connect with me on [LinkedIn](https://www.linkedin.com/in/jens-bogaert-6b53b526a/).
 
