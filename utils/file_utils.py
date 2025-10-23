@@ -1,8 +1,18 @@
 import csv
+import json
 
 
 class FileUtils:
     """Utility class for loading and storing CSV files."""
+
+    @staticmethod
+    def load_config(filename: str = "config.json") -> dict:
+        """Load configuration from a JSON file.
+
+        :param filename: path to the JSON configuration file (default: config.json).
+        :return: dictionary containing configuration values."""
+        with open(filename, mode="r", encoding="utf-8") as file:
+            return json.load(file)
 
     @staticmethod
     def load_colleagues(filename: str) -> list[str]:

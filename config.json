@@ -1,0 +1,6 @@
+{
+  "number_of_tables": 5,
+  "table_capacity": 5,
+  "input_file": "new_colleagues.csv",
+  "output_file": "output.csv"
+}

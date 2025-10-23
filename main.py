@@ -6,16 +6,17 @@ import sys
 def main():
     """Main function to organize the openspace seating arrangement."""
 
-    # Configuration
-    NUMBER_OF_TABLES = 5
-    TABLE_CAPACITY = 5
-    OUTPUT_FILE = "output.csv"
+    # Load configuration
+    config = FileUtils.load_config("config.json")
+    NUMBER_OF_TABLES = config["number_of_tables"]
+    TABLE_CAPACITY = config["table_capacity"]
+    OUTPUT_FILE = config["output_file"]
 
-    # Get input file from command line argument or use default
+    # Get input file from command line argument or use default from config
     if len(sys.argv) > 1:
         INPUT_FILE = sys.argv[1]
     else:
-        INPUT_FILE = "new_colleagues.csv"
+        INPUT_FILE = config["input_file"]
 
     # Load colleagues from CSV file
     print(f"Loading colleagues from file: {INPUT_FILE}")
