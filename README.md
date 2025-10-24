@@ -63,6 +63,10 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+### Terminal
+
+![example_svg](termtosvg_qsip2q4m.svg)
+
 ## ⏱️ Timeline
 
 This project took two days for completion.

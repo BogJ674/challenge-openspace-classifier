@@ -1,0 +1,184 @@
+{
+  "config": {
+    "number_of_tables": 8,
+    "table_capacity": 3,
+    "input_file": "new_colleagues.csv"
+  },
+  "tables": [
+    {
+      "table_number": 1,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Imran",
+          "free": false
+        },
+        {
+          "seat_number": 2,
+          "occupant": "Bryan",
+          "free": false
+        },
+        {
+          "seat_number": 3,
+          "occupant": "Faranges",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 2,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Amine",
+          "free": false
+        },
+        {
+          "seat_number": 2,
+          "occupant": "Brigitta",
+          "free": false
+        },
+        {
+          "seat_number": 3,
+          "occupant": "Sandrine",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 3,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Živile",
+          "free": false
+        },
+        {
+          "seat_number": 2,
+          "occupant": "Ena",
+          "free": false
+        },
+        {
+          "seat_number": 3,
+          "occupant": "Pierrick",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 4,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Intan K.",
+          "free": false
+        },
+        {
+          "seat_number": 2,
+          "occupant": "Nancy",
+          "free": false
+        },
+        {
+          "seat_number": 3,
+          "occupant": "Esra",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 5,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Tim",
+          "free": false
+        },
+        {
+          "seat_number": 2,
+          "occupant": "Welederufeal",
+          "free": false
+        },
+        {
+          "seat_number": 3,
+          "occupant": "Aleksei",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 6,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Jens",
+          "free": false
+        },
+        {
+          "seat_number": 2,
+          "occupant": "Michiel",
+          "free": false
+        },
+        {
+          "seat_number": 3,
+          "occupant": "Frédéric",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 7,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Oliver",
+          "free": false
+        },
+        {
+          "seat_number": 2,
+          "occupant": "Kristin",
+          "free": false
+        },
+        {
+          "seat_number": 3,
+          "occupant": "Héloïse",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 8,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Viktor",
+          "free": false
+        },
+        {
+          "seat_number": 2,
+          "occupant": "Hamideh",
+          "free": false
+        },
+        {
+          "seat_number": 3,
+          "occupant": "Astha",
+          "free": false
+        }
+      ]
+    }
+  ],
+  "unseated": [
+    "Anna"
+  ],
+  "preferences": {
+    "whitelist": {
+      "Imran": [
+        "Bryan"
+      ]
+    },
+    "blacklist": {
+      "Bryan": [
+        "Imran"
+      ]
+    }
+  }
+}

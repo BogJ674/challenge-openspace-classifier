@@ -60,3 +60,57 @@ class FileUtils:
         except FileNotFoundError:
             return []
         return data
+
+    @staticmethod
+    def store_openspace_state(filename: str, state: dict) -> None:
+        """Store complete openspace state to a JSON file.
+
+        :param filename: path to the output JSON file.
+        :param state: dictionary containing complete openspace state.
+        :return: None"""
+        with open(filename, mode="w", encoding="utf-8") as file:
+            json.dump(state, file, indent=2, ensure_ascii=False)
+
+    @staticmethod
+    def load_openspace_state(filename: str) -> dict:
+        """Load complete openspace state from a JSON file.
+
+        :param filename: path to the JSON file containing openspace state.
+        :return: dictionary containing openspace state, or empty dict if file not found."""
+        try:
+            with open(filename, mode="r", encoding="utf-8") as file:
+                return json.load(file)
+        except FileNotFoundError:
+            return {}
+
+    @staticmethod
+    def add_colleague_to_file(filename: str, colleague_name: str) -> bool:
+        """Add a new colleague to the colleagues CSV file.
+
+        :param filename: path to the colleagues CSV file.
+        :param colleague_name: name of the colleague to add.
+        :return: True if added successfully, False if already exists."""
+        try:
+            # Load existing colleagues
+            existing_colleagues = FileUtils.load_colleagues(filename)
+
+            # Check if colleague already exists
+            if colleague_name in existing_colleagues:
+                return False
+
+            # Add new colleague
+            existing_colleagues.append(colleague_name)
+
+            # Write back to file
+            with open(filename, mode="w", newline="", encoding="utf-8") as file:
+                writer = csv.writer(file)
+                for name in existing_colleagues:
+                    writer.writerow([name])
+
+            return True
+        except FileNotFoundError:
+            # Create new file with this colleague
+            with open(filename, mode="w", newline="", encoding="utf-8") as file:
+                writer = csv.writer(file)
+                writer.writerow([colleague_name])
+            return True
