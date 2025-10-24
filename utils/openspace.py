@@ -100,18 +100,14 @@ class Openspace:
         :param table_idx: index of the table to check
         :return: True if person can sit at table, False if blacklist violation"""
 
-        # Check if person has blacklist preferences
-        if person not in self.preferences["blacklist"]:
-            return True
-
-        # Get list of people this person wants to avoid
-        avoided_people = self.preferences["blacklist"][person]
-
-        # Check if any avoided people are already at this table
         table = self.tables[table_idx]
-        for seat in table.seats:
-            if not seat.free and seat.occupant in avoided_people:
-                return False
+
+        # Check if person has blacklist preferences and anyone they avoid is at this table
+        if person in self.preferences["blacklist"]:
+            avoided_people = self.preferences["blacklist"][person]
+            for seat in table.seats:
+                if not seat.free and seat.occupant in avoided_people:
+                    return False
 
         # Also check reverse - if anyone at the table has this person on their blacklist
         for seat in table.seats:
@@ -123,8 +119,28 @@ class Openspace:
 
         return True
 
+    def _has_blacklist_conflict(self, person1: str, person2: str) -> bool:
+        """Check if two people have a blacklist conflict.
+
+        :param person1: first person's name
+        :param person2: second person's name
+        :return: True if they should not sit together, False otherwise"""
+
+        # Check if person1 has person2 on their blacklist
+        if person1 in self.preferences["blacklist"]:
+            if person2 in self.preferences["blacklist"][person1]:
+                return True
+
+        # Check if person2 has person1 on their blacklist
+        if person2 in self.preferences["blacklist"]:
+            if person1 in self.preferences["blacklist"][person2]:
+                return True
+
+        return False
+
     def _get_whitelist_groups(self, names: list[str]) -> list[set]:
         """Create groups of people who want to sit together based on whitelist.
+        Groups are split if there are blacklist conflicts between members.
 
         :param names: list of all names to organize
         :return: list of sets, where each set is a group of people who want to sit together"""
@@ -134,23 +150,37 @@ class Openspace:
         for person in names:
             graph[person] = set()
 
-        # Add all whitelist connections (even one-way)
+        # Add all whitelist connections (even one-way), but only if no blacklist conflict
         for person, targets in self.preferences["whitelist"].items():
             if person in graph:
                 for target in targets:
                     if target in graph:
-                        graph[person].add(target)
-                        # Make it bidirectional - if A wants B, seat them together
-                        graph[target].add(person)
+                        # Check for blacklist conflict before adding connection
+                        if not self._has_blacklist_conflict(person, target):
+                            graph[person].add(target)
+                            # Make it bidirectional - if A wants B, seat them together
+                            graph[target].add(person)
 
-        # Find connected components (groups)
+        # Find connected components (groups) using DFS
         groups = []
         processed = set()
 
+        def has_group_conflict(person, group):
+            """Check if person has blacklist conflict with anyone in the group."""
+            for member in group:
+                if self._has_blacklist_conflict(person, member):
+                    return True
+            return False
+
         def dfs(node, group):
-            """Depth-first search to find all connected people."""
+            """Depth-first search to find all connected people without blacklist conflicts."""
             if node in processed:
                 return
+
+            # Check if this node conflicts with anyone already in the group
+            if has_group_conflict(node, group):
+                return
+
             processed.add(node)
             group.add(node)
             for neighbor in graph[node]:
@@ -208,13 +238,62 @@ class Openspace:
                             remaining_names.remove(person)
                         break
 
-        # Phase 2: Seat remaining people while respecting blacklist
+        # Phase 2: Seat remaining people while respecting blacklist and using optimal distribution
         random.shuffle(remaining_names)
 
-        for person in remaining_names:
+        # Get current occupancy of each table
+        current_occupancy = [self.table_capacity - table.left_capacity() for table in self.tables]
+
+        # Calculate target distribution for remaining people
+        # We need to consider what's already seated
+        total_to_seat = len(remaining_names)
+        total_already_seated = sum(current_occupancy)
+        total_people = total_already_seated + total_to_seat
+
+        # Calculate the ideal final distribution
+        ideal_distribution = self.calculate_table_distribution(total_people)
+
+        # Calculate how many MORE people each table needs to reach ideal distribution
+        target_additions = []
+        for table_idx in range(self.number_of_tables):
+            current = current_occupancy[table_idx]
+            ideal = ideal_distribution[table_idx]
+            needed = max(0, ideal - current)  # How many more people this table needs
+            target_additions.append(needed)
+
+        # Create table priority list: (table_idx, spots_needed), sorted by spots needed (descending)
+        table_priority = [(idx, needed) for idx, needed in enumerate(target_additions) if needed > 0]
+        table_priority.sort(key=lambda x: x[1], reverse=True)
+
+        # Track which people we've tried to seat
+        remaining_people = remaining_names.copy()
+
+        # Try to fill tables according to priority
+        for table_idx, spots_needed in table_priority:
+            spots_filled = 0
+            people_to_remove = []
+
+            for person in remaining_people:
+                if spots_filled >= spots_needed:
+                    break
+
+                # Check if this person can sit at this table
+                if self.tables[table_idx].has_free_spot() and self._can_sit_at_table(person, table_idx):
+                    self.tables[table_idx].assign_seat(person)
+                    seated_names.append(person)
+                    people_to_remove.append(person)
+                    spots_filled += 1
+
+            # Remove seated people from remaining list
+            for person in people_to_remove:
+                remaining_people.remove(person)
+
+        # Phase 2b: Handle any remaining people who couldn't be seated due to distribution or blacklist
+        # Try to seat them at any available table
+        for person in remaining_people:
             seated = False
 
-            # Try to find a suitable table
+            # Try to find any suitable table
             for table_idx, table in enumerate(self.tables):
                 if table.has_free_spot() and self._can_sit_at_table(person, table_idx):
                     table.assign_seat(person)

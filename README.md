@@ -3,9 +3,9 @@
 
 ## 🏢 Description
 
-Your company moved to a new office at CEVI Ghent. Its an openspace with 6 tables of 4 seats. As many of you are new colleagues, you come up with the idea of changing seats everyday and get to know each other better by working side by side with your new colleagues. 
+Your company moved to a new office at CEVI Ghent. It's an openspace with configurable tables and seating capacity. As many of you are new colleagues, you come up with the idea of changing seats everyday and get to know each other better by working side by side with your new colleagues.
 
-This script runs everyday to re-assign everybody to a new seat.
+This interactive application helps you organize and manage seating arrangements dynamically. You can adjust the room layout, handle late arrivals, set seating preferences, and re-organize seating at any time.
 
 ![coworking_img](https://media1.tenor.com/m/Z0GoLGN6GcwAAAAd/wwe-john-cena.gif)
 
@@ -14,13 +14,15 @@ This script runs everyday to re-assign everybody to a new seat.
 ```
 .
 ├── utils/
-│   ├── openspace.py
-│   ├── table.py
-│   └── utils.py
+│   ├── openspace.py          # Openspace class - manages tables and seating
+│   ├── table.py              # Table and Seat classes
+│   └── file_utils.py         # CSV and JSON file operations
 ├── .gitignore
-├── main.py
-├── new_colleagues.csv
-├── output.csv
+├── main.py                   # Interactive terminal application
+├── new_colleagues.csv        # Input file with colleague names
+├── openspace_state.json      # Saved session state (auto-generated)
+├── output.csv                # Exported seating arrangement (optional)
+├── config.json               # Room configuration (optional)
 └── README.md
 ```
 
@@ -30,49 +32,53 @@ This script runs everyday to re-assign everybody to a new seat.
 
 2. To run the script, you can execute the `main.py` file from your command line:
 
-```
-   python main.py
-```
-or add an input file:
-```
-   python main.py new_colleagues.csv
-```
+```bash
+python main.py
+````
 
-3. The script reads your input file, and organizes your colleagues to random seat assignments. The resulting seating plan is displayed in your console and also saved to an "output.csv" file in your root directory. 
+3. The application launches an interactive terminal menu with the following features:
 
-```python
-def main():
-    input_filepath = "new_colleagues.csv"
-    output_filename = "output.csv"
+## 🎨 Interactive Terminal Interface
 
-    # Creates a list that contains all the colleagues names
-    names = utils.read_names_from_csv(input_filepath)
+The terminal provides a color-coded menu system with real-time statistics:
 
-    # create an OpenSpace()
-    open_space = OpenSpace()
+### Menu Options
 
-    # assign a colleague randomly to a table
-    open_space.organize(names)
+**Setup & Configuration**
+- **Configure room**: Adjust number of tables and seating capacity
+- **Organize initial seating**: Load colleagues from CSV and create first arrangement
 
-    # save the seat assigments to a new file
-    open_space.store(output_filename)
+**Dynamic Changes**
+- **Add colleague**: Add late arrivals and automatically seat them
+- **Add table**: Expand room capacity on the fly
+- **Re-organize seating**: Shuffle all seated colleagues to new positions
 
-    # display assignments in the terminal
-    open_space.display()
+**Seating Preferences**
+- **Whitelist**: Set preferences for colleagues who want to sit together
+- **Blacklist**: Keep certain colleagues apart
 
-if __name__ == "__main__":
-    main()
-```
-### Terminal
+**View Information**
+- **Current arrangement**: Visual display of all tables and seated colleagues
+- **Room statistics**: Track seated/available/alone/unseated counts
 
-![example_svg](termtosvg_qsip2q4m.svg)
+### Statistics Footer
+
+Every screen shows real-time stats at the bottom:
+- **Seated**: Number of colleagues currently seated
+- **Available**: Number of empty seats
+- **Alone**: Number of people sitting at a table by themselves
+- **Unseated**: People who couldn't be seated due to capacity
+
+### State Persistence
+
+The application automatically saves your session state to `openspace_state.json`, so you can close and resume without losing your seating arrangement or preferences.
 
 ## ⏱️ Timeline
 
 This project took two days for completion.
 
 ## 📌 Personal Situation
-This project was done as part of the AI Boocamp at BeCode.org. 
+This project was done as part of the AI Bootcamp at BeCode.org. 
 
 Connect with me on [LinkedIn](https://www.linkedin.com/in/jens-bogaert-6b53b526a/).
 
