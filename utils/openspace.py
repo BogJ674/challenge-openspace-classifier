@@ -44,6 +44,7 @@ class Openspace:
         Examples:
         - 6 tables of 4, 22 people -> [4, 4, 4, 4, 3, 3] (4 full, 2 with 3)
         - 7 tables of 4, 24 people -> [4, 4, 4, 4, 4, 4, 0] (6 full, 1 empty)
+        - 7 tables of 4, 25 people -> [4, 4, 4, 4, 3, 3, 3] (4 full, 3 with 3)
         - 4 tables of 4, 7 people -> [4, 3, 0, 0] (1 full, 1 with 3, 2 empty)
         """
         total_capacity = self.number_of_tables * self.table_capacity

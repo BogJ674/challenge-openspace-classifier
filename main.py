@@ -7,6 +7,12 @@ import os
 
 # ANSI color codes
 class Colors:
+    """
+    ANSI color codes for terminal output formatting.
+
+    This class provides constants for various text colors and background colors
+    to be used in terminal output.
+    """
     RESET = "\033[0m"
     BOLD = "\033[1m"
 
@@ -24,13 +30,21 @@ class Colors:
     BG_GREEN = "\033[42m"
 
 
-def clear_terminal():
-    """Clear the terminal screen."""
+def clear_terminal() -> None:
+    """
+    Clear the terminal screen.
+
+    Uses the appropriate system command for clearing the terminal based on the operating system.
+    """
     os.system("cls" if os.name == "nt" else "clear")
 
 
-def display_statistics_footer(openspace):
-    """Display statistics footer at the bottom of the screen."""
+def display_statistics_footer(openspace: Openspace) -> None:
+    """
+    Display statistics footer at the bottom of the screen.
+
+    :param openspace: The Openspace instance containing the seating arrangement.
+    """
     people_seated = openspace.get_seated_count()
     available_seats = openspace.get_remaining_seats()
     people_alone = openspace.get_people_alone_count()
@@ -47,8 +61,12 @@ def display_statistics_footer(openspace):
     print(f"\n{Colors.CYAN}{Colors.BOLD}{'=' * 50}{Colors.RESET}")
 
 
-def display_menu(openspace):
-    """Display the main menu."""
+def display_menu(openspace: Openspace) -> None:
+    """
+    Display the main menu.
+
+    :param openspace: The Openspace instance containing the seating arrangement.
+    """
     clear_terminal()
     print(f"\n{Colors.CYAN}{Colors.BOLD}{'=' * 50}{Colors.RESET}")
     print(f"{Colors.CYAN}{Colors.BOLD}OPENSPACE SEATING ORGANIZER{Colors.RESET}")
@@ -75,11 +93,12 @@ def display_menu(openspace):
     display_statistics_footer(openspace)
 
 
-def configure_room(openspace):
-    """Configure room setup.
+def configure_room(openspace: Openspace) -> bool:
+    """
+    Configure room setup.
 
-    Returns:
-        bool: True if room dimensions changed
+    :param openspace: The Openspace instance to configure.
+    :return: A bool indicating if room dimensions changed (True) or not (False).
     """
     clear_terminal()
     print(f"\n{Colors.CYAN}{Colors.BOLD}=== ROOM CONFIGURATION ==={Colors.RESET}\n")
@@ -125,8 +144,13 @@ def configure_room(openspace):
         return False
 
 
-def organize_seating(openspace, state_file):
-    """Organize initial seating arrangement."""
+def organize_seating(openspace: Openspace, state_file: str) -> None:
+    """
+    Organize initial seating arrangement.
+
+    :param openspace: The Openspace instance to organize.
+    :param state_file: A str path to the state file for saving the arrangement.
+    """
     clear_terminal()
     print(f"\n{Colors.CYAN}{Colors.BOLD}=== ORGANIZE SEATING ==={Colors.RESET}\n")
     print(f"Current input file: {Colors.BLUE}{openspace.input_file}{Colors.RESET}")
@@ -163,8 +187,13 @@ def organize_seating(openspace, state_file):
     input("\nPress Enter to continue...")
 
 
-def add_colleague_menu(openspace, state_file):
-    """Add a colleague to the room."""
+def add_colleague_menu(openspace: Openspace, state_file: str) -> None:
+    """
+    Add a colleague to the room.
+
+    :param openspace: The Openspace instance to add a colleague to.
+    :param state_file: A str path to the state file for saving the arrangement.
+    """
     clear_terminal()
     print(f"\n{Colors.CYAN}{Colors.BOLD}=== ADD COLLEAGUE ==={Colors.RESET}\n")
 
@@ -196,8 +225,13 @@ def add_colleague_menu(openspace, state_file):
     input("\nPress Enter to continue...")
 
 
-def add_table_menu(openspace, state_file):
-    """Add a table to the room."""
+def add_table_menu(openspace: Openspace, state_file: str) -> None:
+    """
+    Add a table to the room.
+
+    :param openspace: The Openspace instance to add a table to.
+    :param state_file: A str path to the state file for saving the arrangement.
+    """
     clear_terminal()
     print(f"\n{Colors.CYAN}{Colors.BOLD}=== ADD TABLE ==={Colors.RESET}\n")
 
@@ -219,8 +253,13 @@ def add_table_menu(openspace, state_file):
     input("\nPress Enter to continue...")
 
 
-def manage_preferences(openspace, state_file):
-    """Manage seating preferences."""
+def manage_preferences(openspace: Openspace, state_file: str) -> None:
+    """
+    Manage seating preferences.
+
+    :param openspace: The Openspace instance to manage preferences for.
+    :param state_file: A str path to the state file for saving the arrangement.
+    """
     clear_terminal()
     print(f"\n{Colors.CYAN}{Colors.BOLD}=== MANAGE PREFERENCES ==={Colors.RESET}\n")
     print(f"{Colors.GREEN}1.{Colors.RESET} Add whitelist preference (sit with someone)")
@@ -277,8 +316,12 @@ def manage_preferences(openspace, state_file):
         input("\nPress Enter to continue...")
 
 
-def show_statistics(openspace):
-    """Display room statistics."""
+def show_statistics(openspace: Openspace) -> None:
+    """
+    Display room statistics.
+
+    :param openspace: The Openspace instance containing the seating arrangement.
+    """
     clear_terminal()
     print(f"\n{Colors.CYAN}{Colors.BOLD}{'=' * 50}{Colors.RESET}")
     print(f"{Colors.CYAN}{Colors.BOLD}ROOM STATISTICS{Colors.RESET}")
@@ -306,8 +349,12 @@ def show_statistics(openspace):
     input("\nPress Enter to continue...")
 
 
-def show_arrangement(openspace):
-    """Display current seating arrangement."""
+def show_arrangement(openspace: Openspace) -> None:
+    """
+    Display current seating arrangement.
+
+    :param openspace: The Openspace instance containing the seating arrangement.
+    """
     clear_terminal()
     print(f"\n{Colors.CYAN}{Colors.BOLD}{'=' * 50}{Colors.RESET}")
     print(f"{Colors.CYAN}{Colors.BOLD}CURRENT SEATING ARRANGEMENT{Colors.RESET}")
@@ -327,8 +374,13 @@ def show_arrangement(openspace):
     input("\nPress Enter to continue...")
 
 
-def main():
-    """Main function to organize the openspace seating arrangement."""
+def main() -> None:
+    """
+    Main function to organize the openspace seating arrangement.
+
+    Provides an interactive menu system for managing openspace seating including
+    configuration, organizing seats, adding colleagues and tables, and viewing statistics.
+    """
 
     STATE_FILE = "openspace_state.json"
 

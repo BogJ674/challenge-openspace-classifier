@@ -1,7 +1,7 @@
 {
   "config": {
-    "number_of_tables": 7,
-    "table_capacity": 4,
+    "number_of_tables": 22,
+    "table_capacity": 1,
     "input_file": "new_colleagues.csv"
   },
   "tables": [
@@ -10,22 +10,7 @@
       "seats": [
         {
           "seat_number": 1,
-          "occupant": "Aleksei",
-          "free": false
-        },
-        {
-          "seat_number": 2,
-          "occupant": "Astha",
-          "free": false
-        },
-        {
-          "seat_number": 3,
-          "occupant": "Ena",
-          "free": false
-        },
-        {
-          "seat_number": 4,
-          "occupant": "Oliver",
+          "occupant": "Imran",
           "free": false
         }
       ]
@@ -35,22 +20,7 @@
       "seats": [
         {
           "seat_number": 1,
-          "occupant": "Hamideh",
-          "free": false
-        },
-        {
-          "seat_number": 2,
-          "occupant": "Brigitta",
-          "free": false
-        },
-        {
-          "seat_number": 3,
-          "occupant": "Faranges",
-          "free": false
-        },
-        {
-          "seat_number": 4,
-          "occupant": "Tim",
+          "occupant": "Viktor",
           "free": false
         }
       ]
@@ -60,22 +30,7 @@
       "seats": [
         {
           "seat_number": 1,
-          "occupant": "Kristin",
-          "free": false
-        },
-        {
-          "seat_number": 2,
-          "occupant": "Bryan",
-          "free": false
-        },
-        {
-          "seat_number": 3,
-          "occupant": "Michiel",
-          "free": false
-        },
-        {
-          "seat_number": 4,
-          "occupant": "Jens",
+          "occupant": "Welederufeal",
           "free": false
         }
       ]
@@ -85,22 +40,7 @@
       "seats": [
         {
           "seat_number": 1,
-          "occupant": "Welederufeal",
-          "free": false
-        },
-        {
-          "seat_number": 2,
-          "occupant": "Pierrick",
-          "free": false
-        },
-        {
-          "seat_number": 3,
-          "occupant": "Héloïse",
-          "free": false
-        },
-        {
-          "seat_number": 4,
-          "occupant": "Amine",
+          "occupant": "Tim",
           "free": false
         }
       ]
@@ -110,23 +50,8 @@
       "seats": [
         {
           "seat_number": 1,
-          "occupant": "Intan K.",
+          "occupant": "Živile",
           "free": false
-        },
-        {
-          "seat_number": 2,
-          "occupant": "Frédéric",
-          "free": false
-        },
-        {
-          "seat_number": 3,
-          "occupant": "Sandrine",
-          "free": false
-        },
-        {
-          "seat_number": 4,
-          "occupant": null,
-          "free": true
         }
       ]
     },
@@ -135,23 +60,8 @@
       "seats": [
         {
           "seat_number": 1,
-          "occupant": "Nancy",
+          "occupant": "Bryan",
           "free": false
-        },
-        {
-          "seat_number": 2,
-          "occupant": "Imran",
-          "free": false
-        },
-        {
-          "seat_number": 3,
-          "occupant": "Živile",
-          "free": false
-        },
-        {
-          "seat_number": 4,
-          "occupant": null,
-          "free": true
         }
       ]
     },
@@ -160,28 +70,167 @@
       "seats": [
         {
           "seat_number": 1,
-          "occupant": "Viktor",
+          "occupant": "Faranges",
           "free": false
-        },
+        }
+      ]
+    },
+    {
+      "table_number": 8,
+      "seats": [
         {
-          "seat_number": 2,
-          "occupant": "Anna",
+          "seat_number": 1,
+          "occupant": "Sandrine",
           "free": false
-        },
+        }
+      ]
+    },
+    {
+      "table_number": 9,
+      "seats": [
         {
-          "seat_number": 3,
+          "seat_number": 1,
           "occupant": "Esra",
           "free": false
-        },
+        }
+      ]
+    },
+    {
+      "table_number": 10,
+      "seats": [
         {
-          "seat_number": 4,
-          "occupant": null,
-          "free": true
+          "seat_number": 1,
+          "occupant": "Nancy",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 11,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Héloïse",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 12,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Ena",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 13,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Michiel",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 14,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Brigitta",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 15,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Amine",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 16,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Oliver",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 17,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Aleksei",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 18,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Hamideh",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 19,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Frédéric",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 20,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Jens",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 21,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Anna",
+          "free": false
+        }
+      ]
+    },
+    {
+      "table_number": 22,
+      "seats": [
+        {
+          "seat_number": 1,
+          "occupant": "Pierrick",
+          "free": false
         }
       ]
     }
   ],
-  "unseated": [],
+  "unseated": [
+    "Kristin",
+    "Intan K.",
+    "Astha"
+  ],
   "preferences": {
     "whitelist": {
       "Imran": [
