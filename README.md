@@ -42,7 +42,7 @@ python main.py
 
 The terminal provides a color-coded menu system with real-time statistics:
 
-![terminal_svg](https://file%2B.vscode-resource.vscode-cdn.net/Users/jensbogaert/Desktop/BeCode/challenge-openspace-classifier/termtosvg_qsip2q4m.svg?version%3D1761313606159)
+![terminal_svg](termtosvg_qsip2q4m.svg)
 
 ### Menu Options
 
