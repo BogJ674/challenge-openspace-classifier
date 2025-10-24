@@ -80,7 +80,27 @@ The application automatically saves your session state to `openspace_state.json`
 This project took two days for completion.
 
 ## 📌 Personal Situation
-This project was done as part of the AI Bootcamp at BeCode.org. 
+This project was done as part of the AI Bootcamp at BeCode.org.
 
 Connect with me on [LinkedIn](https://www.linkedin.com/in/jens-bogaert-6b53b526a/).
+
+## 🌿 Branch Information
+
+This repository contains two main branches:
+
+- **`main`** - Contains the complete implementation with all must-haves and nice-to-haves features
+- **`must-have`** - Contains only the core required functionality (must-haves)
+
+## 🚀 Future Enhancements
+
+Features that would have been great additions but weren't implemented due to time constraints:
+
+- **Delete tables**: Remove tables from the room dynamically
+- **Delete colleagues**: Remove colleagues from the seating arrangement
+- **Manual swapping**: Swap two colleagues between seats or tables
+- **Manual placement**: Place specific colleagues at specific tables or seats
+- **Variable table sizes**: Support tables with different capacities instead of uniform sizing
+- **Seat history**: Track which colleagues have sat together before to maximize diversity
+- **Conflict resolution**: Better handling of incompatible whitelist/blacklist preferences
+- **Export formats**: Support for multiple export formats (PDF, Excel, etc.)
 
